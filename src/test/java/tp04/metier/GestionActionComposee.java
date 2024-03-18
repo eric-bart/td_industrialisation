@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 public class GestionActionComposee {
      
     @Test
-    public void testAcheterActionComposee() {
+    void testAcheterActionComposee() {
         //Arrange
         ActionSimple action_simple = new ActionSimple("Action Test");
         ActionSimple action_simple_2 = new ActionSimple("Action Test_2");
@@ -44,6 +44,16 @@ public class GestionActionComposee {
         portefeuille.acheter(action_composee, 2);
         Assertions.assertEquals(portefeuille.mapActions.get(action_composee), 7);
     
+        
+    }
+    
+    @Test
+    void testVendreActionComposee(){
+        ActionComposee action_composee = new ActionComposee("Action composee Test");
+        //Action
+        Portefeuille portefeuille = new Portefeuille();
+        portefeuille.acheter(action_composee, 2);
+        portefeuille.vendre(action_composee, 1);
         
     }
 }

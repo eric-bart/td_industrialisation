@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 public class GestionActionSimple {
     
     @Test
-    public void testAcheterActionSimple() {
+    void testAcheterActionSimple() {
         //Arrange
         ActionSimple action_simple = new ActionSimple("Action Test");
         //Action
@@ -42,7 +42,7 @@ public class GestionActionSimple {
     }
     
     @Test
-    public void testVendreActionSimple() {
+    void testVendreActionSimple() {
         //Arrange
         ActionSimple action_simple = new ActionSimple("Action Test");
         //Action
