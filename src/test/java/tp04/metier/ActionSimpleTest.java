@@ -31,7 +31,7 @@ public class ActionSimpleTest {
  * @author noeCollongues
  */
     @Test
-    protected void testValidAssignmentValueShouldSucceed() {
+    public void testValidAssignmentValueShouldSucceed() {
         //Creating test variables
         final float testValue = (float) 2.00;
         final ActionSimple action = new ActionSimple("actionTest");
@@ -49,7 +49,7 @@ public class ActionSimpleTest {
     * @author noeCollongues
     */
     @Test
-    protected void testValueAlreadyExistsForDayShouldFail() {
+    public void testValueAlreadyExistsForDayShouldFail() {
         //Creating test variables
         final float testValue1 = (float) 2.00;
         final float testValue2 = (float) 3.00;
@@ -72,7 +72,7 @@ public class ActionSimpleTest {
     * @author noeCollongues
     */
     @Test
-    protected void testNegativeValueShouldFail() {
+    public void testNegativeValueShouldFail() {
         //Creating test variables
         final float testValue = (float) -2.00;
         final ActionSimple action = new ActionSimple("actionTest");
