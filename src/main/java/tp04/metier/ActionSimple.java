@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  *
- * @author somebody
+ * @author samuelGardies
  */
 public class ActionSimple extends Action {
 
