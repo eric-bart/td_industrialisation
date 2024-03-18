@@ -1,4 +1,5 @@
 /*
+ * test push
  * Copyright 2024 David Navarre &lt;David.Navarre at irit.fr&gt;.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +26,9 @@ import org.junit.jupiter.api.Test;
 public class JourTest {
 
     private static final int DEFAULT_DAY = 1;
-    private static final int DEFAULT_YEAR = 1;
-    private static final int INCORRECT_DAY = 0;
+    private static final int DEFAULT_YEAR = 1901;
+    private static final int INCORRECT_MIN_DAY = 0;
+    private static final int INCORRECT_MAX_DAY = 367;
     private static final int INCORRECT_YEAR = 0;
 
     public JourTest() {
@@ -34,7 +36,7 @@ public class JourTest {
     }
 
     @Test
-    protected void testConstructorParametersAreCorrectSuccess() {
+    public void testConstructorParametersAreCorrectSuccess() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
         //Action
@@ -44,16 +46,44 @@ public class JourTest {
         Assertions.assertEquals(expectedToString, currentToString, "Basic construction");
     }
 
-    //@Test
-    protected void testConstructorDayIncorrectShouldFail() {
+    @Test
+    public void testConstructorDayIncorrectShouldFail() {
         //Arrange
-        final String expectedMessage = "0 must not be used as a valid Day";
+        final String expectedMessage = "noJour must be greater than 0 and lower or equal to 366";
         //Action and asserts
         IllegalArgumentException assertThrowsExactly = Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> {
-            new Jour(DEFAULT_YEAR, INCORRECT_DAY);
-        }, "0 must not be used as a valid Day");
-        final String currentMessage = assertThrowsExactly.getMessage();
+            new Jour(DEFAULT_YEAR, INCORRECT_MIN_DAY);
+        }, "noJour must be greater than 0 and lower or equal to 366");
+        String currentMessage = assertThrowsExactly.getMessage();
+        Assertions.assertEquals(expectedMessage, currentMessage, "Expected error message");
+        
+        assertThrowsExactly = Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> {
+            new Jour(DEFAULT_YEAR, INCORRECT_MAX_DAY);
+        }, "noJour must be greater than 0 and lower or equal to 366");
+        currentMessage = assertThrowsExactly.getMessage();
         Assertions.assertEquals(expectedMessage, currentMessage, "Expected error message");
 
+    }
+    
+    @Test
+    public void testConstructorYearIncorrectShouldFail() {
+        //Arrange
+        final String expectedMessage = "annee must be greater than 1901";
+        //Action and asserts
+        IllegalArgumentException assertThrowsExactly = Assertions.assertThrowsExactly(IllegalArgumentException.class, () -> {
+            new Jour(INCORRECT_YEAR, DEFAULT_DAY);
+        }, "annee must be greater than 1901");
+        final String currentMessage = assertThrowsExactly.getMessage();
+        Assertions.assertEquals(expectedMessage, currentMessage, "Expected error message");
+    }
+    
+    @Test
+    public void testGetShouldReturnValues() {
+        //Arrange
+        final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
+        
+        //Asserts
+        Assertions.assertEquals(DEFAULT_YEAR, jour.getAnnee(), "Annee should be 1901");
+        Assertions.assertEquals(DEFAULT_DAY, jour.getNoJour(), "noJour should be 1");
     }
 }
