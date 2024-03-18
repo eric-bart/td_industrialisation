@@ -15,6 +15,7 @@
  */
 package tp04.metier;
 
+import java.util.ArrayList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -124,5 +125,26 @@ public class ActionSimpleTest {
 
         //Assert
         Assertions.assertEquals(expectedToString, currentToString, "Basic construction");
+    }
+    
+    /**
+    * Tests Creating multiple Actions and checking that the static method returns all of them
+    * @author noeCollongues
+    */
+    @Test
+    void testActionListUpdatedShouldSucceed() {
+                final ActionSimple auchan = new ActionSimple("Auchan");
+        final ActionSimple micromania = new ActionSimple("Micromania");
+        final ActionSimple disney = new ActionSimple("Disney");
+        
+        //Arrange
+       ArrayList<ActionSimple> listActions = new ArrayList<ActionSimple>();
+        listActions.add(auchan);
+        listActions.add(micromania);
+        listActions.add(disney);
+
+
+        //Assert
+        Assertions.assertTrue(ActionSimple.consulterActionsSimpleAchetables().equals(listActions), "ratio");
     }
 }
