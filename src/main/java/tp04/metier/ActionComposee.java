@@ -38,14 +38,30 @@ public class ActionComposee extends Action {
 
     @Override
     public float valeur(Jour j) {
-        float valeur;
+        try {
+           float valeur;
 
-        valeur = 0;
-        for (ActionSimple as : this.mapPanier.keySet()) {
-            valeur = valeur + (as.valeur(j) * this.mapPanier.get(as));
+            valeur = 0;
+            for (ActionSimple as : this.mapPanier.keySet()) {
+                valeur = valeur + (as.valeur(j) * this.mapPanier.get(as));
+            }
+            return valeur;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("No value for this day");
         }
-
-        return valeur;
+    }
+    
+    /**
+     * Return the cours date in String format
+     * @param j
+     * @return String
+     */
+    public String getCoursForDateToString(Jour j) {
+        try {
+            return "Cours pour le jour : " + this.valeur(j);
+        } catch(Exception e) {
+            return "Il n'existe pas de cours pour cette valeur";
+        }
     }
 
 }
