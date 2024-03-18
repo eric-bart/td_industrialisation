@@ -30,17 +30,16 @@ public class JourTest {
     private static final int INCORRECT_YEAR = 0;
 
     public JourTest() {
+        
     }
 
     @Test
     protected void testConstructorParametersAreCorrectSuccess() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
-
         //Action
         final String expectedToString = "Jour{" + "annee=" + DEFAULT_YEAR + ", noJour=" + DEFAULT_DAY + '}';
         final String currentToString = jour.toString();
-
         //Assert
         Assertions.assertEquals(expectedToString, currentToString, "Basic construction");
     }
