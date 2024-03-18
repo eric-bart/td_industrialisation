@@ -60,11 +60,12 @@ public final class Cours {
      * @param aValeur ths value of the Cours
      */
     public Cours(final Jour aJour, final float aValeur) {
+        checkArguments(aValeur);
         this.jour = aJour;
         this.valeur = aValeur;
     }
     
-    private void checkArguments(float aValeur) {
+    private static void checkArguments(float aValeur) {
         if (aValeur <= 0) {
             throw new IllegalArgumentException("aValeur must be greater or equal to 0");
         }
