@@ -43,8 +43,21 @@ public class Jour {
     }
 
     public Jour(int annee, int noJour) {
+        checkArguments(annee, noJour);
         this.annee = annee;
         this.noJour = noJour;
+    }
+    
+    private void checkArguments(int annee, int noJour) {
+        if (annee < 1901) {
+            throw new IllegalArgumentException("annee must be greater than 1901");
+        }
+        // Test 1 = noJour not negative
+        // Test 2 = noJour not greater than 366
+        // Test 3 = Cannot put 366 in a year that is not a leap year
+        if (noJour <= 0 || noJour > 366 || (noJour == 366 && annee % 4 != 0)) {
+            throw new IllegalArgumentException("noJour must be greater than 0 and lower or equal to 366");
+        }
     }
 
     @Override

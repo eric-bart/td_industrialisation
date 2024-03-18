@@ -50,4 +50,7 @@ public class ActionSimple extends Action {
             return 0; // definition d'une constante possible
         }
     }
+    
+    
+    
 }

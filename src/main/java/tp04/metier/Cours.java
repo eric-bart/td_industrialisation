@@ -63,6 +63,12 @@ public final class Cours {
         this.jour = aJour;
         this.valeur = aValeur;
     }
+    
+    private void checkArguments(float aValeur) {
+        if (aValeur <= 0) {
+            throw new IllegalArgumentException("aValeur must be greater or equal to 0");
+        }
+    }
 
     @Override
     public String toString() {
