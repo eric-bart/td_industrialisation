@@ -133,7 +133,7 @@ public class ActionSimpleTest {
     */
     @Test
     void testActionListUpdatedShouldSucceed() {
-                final ActionSimple auchan = new ActionSimple("Auchan");
+        final ActionSimple auchan = new ActionSimple("Auchan");
         final ActionSimple micromania = new ActionSimple("Micromania");
         final ActionSimple disney = new ActionSimple("Disney");
         
@@ -145,6 +145,6 @@ public class ActionSimpleTest {
 
 
         //Assert
-        Assertions.assertTrue(ActionSimple.consulterActionsSimpleAchetables().equals(listActions), "ratio");
+        Assertions.assertTrue(ActionSimple.consulterActionsSimpleAchetables().equals(listActions), "Liste des actions consultables différentes de celles insérées.");
     }
 }
