@@ -57,10 +57,19 @@ public class ActionSimple extends Action {
      * @param j
      */
     public void printCoursForDate(Jour j) {
+        System.out.println(getCoursForDateToString(j));
+    }
+    
+    /**
+     * Return the cours date in String format
+     * @param j
+     * @return String
+     */
+    public String getCoursForDateToString(Jour j) {
         if (this.valeur(j) == -1) {
-            System.out.println("Il n'existe pas de cours pour cette valeur");
+            return "Il n'existe pas de cours pour cette valeur";
         } else {
-            System.out.println("Cours pour le jour : " + this.valeur(j));
+            return "Cours pour le jour : " + this.valeur(j);
         }
     }
     

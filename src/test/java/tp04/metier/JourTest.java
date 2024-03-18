@@ -26,7 +26,7 @@ import org.junit.jupiter.api.Test;
 public class JourTest {
 
     private static final int DEFAULT_DAY = 1;
-    private static final int DEFAULT_YEAR = 1;
+    private static final int DEFAULT_YEAR = 1901;
     private static final int INCORRECT_DAY = 0;
     private static final int INCORRECT_YEAR = 0;
 
