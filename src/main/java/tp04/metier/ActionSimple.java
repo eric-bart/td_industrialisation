@@ -46,8 +46,7 @@ public class ActionSimple extends Action {
     public float valeur(Jour j) {
         if (this.mapCours.containsKey(j) == true) {
             return this.mapCours.get(j).getValeur();
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("No value for this day");
         }
     }
@@ -69,8 +68,7 @@ public class ActionSimple extends Action {
     public String getCoursForDateToString(Jour j) {
         try {
             return "Cours pour le jour : " + this.valeur(j);
-        } 
-        catch(Exception e) {
+        } catch(Exception e) {
             return "Il n'existe pas de cours pour cette valeur";
         }
     }

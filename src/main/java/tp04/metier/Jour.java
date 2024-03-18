@@ -21,13 +21,13 @@ package tp04.metier;
  */
 public class Jour {
 
-    private int annee;
-    private int noJour;
-    
     private static final int CORRECT_MIN_YEAR = 1901;
     private static final int CORRECT_MIN_DAY = 0;
     private static final int CORRECT_MAX_DAY = 366;
     private static final int MODULO_LEAP_YEAR = 4;
+    
+    private int annee;
+    private int noJour;
 
     /**
      * Get the value of annee
@@ -60,7 +60,8 @@ public class Jour {
         // Test 1 = noJour not negative
         // Test 2 = noJour not greater than 366
         // Test 3 = Cannot put 366 in a year that is not a leap year
-        if (noJour <= CORRECT_MIN_DAY || noJour > CORRECT_MAX_DAY || (noJour == CORRECT_MAX_DAY && annee % MODULO_LEAP_YEAR != 0)) {
+        if (noJour <= CORRECT_MIN_DAY || noJour > CORRECT_MAX_DAY ||
+            (noJour == CORRECT_MAX_DAY && annee % MODULO_LEAP_YEAR != 0)) {
             throw new IllegalArgumentException("noJour must be greater than 0 and lower or equal to 366");
         }
     }
