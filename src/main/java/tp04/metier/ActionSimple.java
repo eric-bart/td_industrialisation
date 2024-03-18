@@ -47,7 +47,30 @@ public class ActionSimple extends Action {
         if (this.mapCours.containsKey(j) == true) {
             return this.mapCours.get(j).getValeur();
         } else {
-            return 0; // definition d'une constante possible
+            throw new IllegalArgumentException("No value for this day");
         }
     }
+    
+    /**
+     * Print the Cours value for the date
+     * @author CMED
+     * @param j
+     */
+    public void printCoursForDate(Jour j) {
+        System.out.println(getCoursForDateToString(j));
+    }
+    
+    /**
+     * Return the cours date in String format
+     * @param j
+     * @return String
+     */
+    public String getCoursForDateToString(Jour j) {
+        try {
+            return "Cours pour le jour : " + this.valeur(j);
+        } catch(Exception e) {
+            return "Il n'existe pas de cours pour cette valeur";
+        }
+    }
+    
 }
