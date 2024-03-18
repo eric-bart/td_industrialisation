@@ -32,7 +32,7 @@ public class ActionSimpleTest {
 
     
     @Test
-    protected void testValueExistForDate() {
+    public void testValueExistForDate() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
         final ActionSimple actionSimple = new ActionSimple("TestActionSimple");
@@ -47,7 +47,7 @@ public class ActionSimpleTest {
     }
     
     @Test
-     protected void testValueNotExistForDate() {
+    public void testValueNotExistForDate() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
         final ActionSimple actionSimple = new ActionSimple("TestActionSimple");
