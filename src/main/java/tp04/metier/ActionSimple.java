@@ -47,10 +47,21 @@ public class ActionSimple extends Action {
         if (this.mapCours.containsKey(j) == true) {
             return this.mapCours.get(j).getValeur();
         } else {
-            return 0; // definition d'une constante possible
+            return -1; // definition d'une constante possible
         }
     }
     
-    
+    /**
+     * Print the Cours value for the date
+     * @author CMED
+     * @param j
+     */
+    public void printCoursForDate(Jour j) {
+        if (this.valeur(j) == -1) {
+            System.out.println("Il n'existe pas de cours pour cette valeur");
+        } else {
+            System.out.println("Cours pour le jour : " + this.valeur(j));
+        }
+    }
     
 }
