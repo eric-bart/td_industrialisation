@@ -22,10 +22,10 @@ import org.junit.jupiter.api.Test;
  *
  * @author Lothaire Bailly
  */
-public class GestionActionComposee {
+public class ActionComposeeTest {
      
     @Test
-    void testAcheterActionComposee() {
+    public void testAcheterActionComposee() {
         //Arrange
         ActionSimple action_simple = new ActionSimple("Action Test");
         ActionSimple action_simple_2 = new ActionSimple("Action Test_2");
@@ -48,7 +48,7 @@ public class GestionActionComposee {
     }
     
     @Test
-    void testVendreActionComposee(){
+    public void testVendreActionComposee(){
         ActionComposee action_composee = new ActionComposee("Action composee Test");
         //Action
         Portefeuille portefeuille = new Portefeuille();

@@ -29,7 +29,7 @@ public class ActionSimpleTest {
     private static final float DEFAULT_ACTIONSIMPLE_VALUE = 100.01f;
     
     @Test
-    void testAcheterActionSimple() {
+    public void testAcheterActionSimple() {
         //Arrange
         ActionSimple action_simple = new ActionSimple("Action Test");
         //Action
@@ -46,7 +46,7 @@ public class ActionSimpleTest {
     }
     
     @Test
-    void testVendreActionSimple() {
+    public void testVendreActionSimple() {
         //Arrange
         ActionSimple action_simple = new ActionSimple("Action Test");
         //Action
@@ -72,7 +72,7 @@ public class ActionSimpleTest {
      * @author noeCollongues
      */
     @Test
-    void testValidAssignmentValueShouldSucceed() {
+    public void testValidAssignmentValueShouldSucceed() {
         //Creating test variables
         final float testValue = (float) 2.00;
         final ActionSimple action = new ActionSimple("actionTest");
@@ -90,7 +90,7 @@ public class ActionSimpleTest {
     * @author noeCollongues
     */
     @Test
-    void testValueAlreadyExistsForDayShouldFail() {
+    public void testValueAlreadyExistsForDayShouldFail() {
         //Creating test variables
         final float testValue1 = (float) 2.00;
         final float testValue2 = (float) 3.00;
@@ -113,7 +113,7 @@ public class ActionSimpleTest {
     * @author noeCollongues
     */
     @Test
-    void testNegativeValueShouldFail() {
+    public void testNegativeValueShouldFail() {
         //Creating test variables
         final float testValue = (float) -2.00;
         final ActionSimple action = new ActionSimple("actionTest");
@@ -132,7 +132,7 @@ public class ActionSimpleTest {
     * @author clement
     */
     @Test
-    void testValueExistForDate() {
+    public void testValueExistForDate() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
         final ActionSimple actionSimple = new ActionSimple("TestActionSimple");
@@ -151,7 +151,7 @@ public class ActionSimpleTest {
     * @author clement
     */
     @Test
-    void testValueNotExistForDate() {
+    public void testValueNotExistForDate() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
         final ActionSimple actionSimple = new ActionSimple("TestActionSimple");
