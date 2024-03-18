@@ -32,8 +32,10 @@ public class GestionActionComposee {
         ActionComposee action_composee = new ActionComposee("Action composee Test");
         //Action
         Portefeuille portefeuille = new Portefeuille();
-        action_composee.enrgComposition(action_simple, 20);
-        action_composee.enrgComposition(action_simple_2, 80);
+        action_composee.enrgComposition(action_simple, 20.0f);
+        action_composee.enrgComposition(action_simple_2, 80.0f);
+        Assertions.assertThrows(IllegalArgumentException.class,() -> action_composee.enrgComposition(action_simple_2, 40.0f));
+
         
         portefeuille.acheter(action_composee, 5);
              

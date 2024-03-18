@@ -32,8 +32,18 @@ public class ActionComposee extends Action {
         this.mapPanier = new HashMap();
     }
 
-    public void enrgComposition(ActionSimple as, float pourcentage) {
-        this.mapPanier.put(as, pourcentage);
+    public void enrgComposition(ActionSimple as, float pourcentage) throws IllegalArgumentException{
+        float pourcentage_total = 0.0f;
+        for (Map.Entry<ActionSimple, Float> entry : mapPanier.entrySet()) {
+            ActionSimple key = entry.getKey();
+            float val = entry.getValue();
+            pourcentage_total += mapPanier.get(key);
+        }
+        if (pourcentage_total + pourcentage <= 100.0){
+            this.mapPanier.put(as, pourcentage);
+        } else {
+            throw new IllegalArgumentException("Pourcentage trop élevé");
+        }
     }
 
     @Override
