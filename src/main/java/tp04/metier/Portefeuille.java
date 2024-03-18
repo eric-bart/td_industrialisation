@@ -8,6 +8,7 @@ package tp04.metier;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  *
  * @author somebody
@@ -28,13 +29,17 @@ public class Portefeuille {
         }
     }
 
-    public void vendre(Action a, int q) {
+    public void vendre(Action a, int q) throws IllegalArgumentException{
         if (this.mapLignes.containsKey(a) == true) {
             if (this.mapLignes.get(a) > q) {
                 this.mapLignes.put(a,this.mapLignes.get(a) - q);
             } else if (this.mapLignes.get(a) == q) {
                 this.mapLignes.remove(a);
+            } else{
+                throw new IllegalArgumentException("Vous n'avez pas assez d'actions en stock pour vendre la quantité saisie");
             }
+        }else{
+            throw new IllegalArgumentException("Vous n'avez pas d'actions");
         }
     }
 

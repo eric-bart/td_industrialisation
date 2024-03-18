@@ -35,6 +35,33 @@ public class AcheterActionTest {
              
         //Assert
         Assertions.assertEquals(portefeuille.mapLignes.get(action_simple), 5);
+        portefeuille.acheter(action_simple, 2);
+        Assertions.assertEquals(portefeuille.mapLignes.get(action_simple), 7);
+    
+        
     }
+    
+    @Test
+    public void testVendreActionSimple() {
+        //Arrange
+        ActionSimple action_simple = new ActionSimple("Action Test");
+        //Action
+        Portefeuille portefeuille = new Portefeuille();
+        
+        portefeuille.acheter(action_simple, 5);
+             
+
+        portefeuille.vendre(action_simple, 2);
+        Assertions.assertEquals(portefeuille.mapLignes.get(action_simple), 3);
+        portefeuille.vendre(action_simple, 3);
+        Assertions.assertThrows(IllegalArgumentException.class,() -> portefeuille.vendre(action_simple, 100));
+        
+        portefeuille.acheter(action_simple, 5);
+        Assertions.assertThrows(IllegalArgumentException.class,() -> portefeuille.vendre(action_simple, 100));
+    
+        
+    }
+    
+    
 
 }
