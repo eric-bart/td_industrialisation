@@ -39,7 +39,7 @@ public class ActionComposee extends Action {
     @Override
     public float valeur(Jour j) {
         try {
-           float valeur;
+            float valeur;
 
             valeur = 0;
             for (ActionSimple as : this.mapPanier.keySet()) {
