@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author clement
  */
-class ActionComposeeTest {
+public class ActionComposeeTest {
     private static final int DEFAULT_DAY = 1;
     private static final int DEFAULT_YEAR = 1901;
     private static final float DEFAULT_ACTIONSIMPLE1_VALUE = 100;
@@ -31,7 +31,7 @@ class ActionComposeeTest {
     private static final Jour DEFAULT_JOUR = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
     
     @Test
-    void testValueExistForDate() {
+    public void testValueExistForDate() {
         //Arrange
         final ActionSimple Default_AS1 = new ActionSimple("ActionSimpleTest1");
         final ActionSimple Default_AS2 = new ActionSimple("ActionSimpleTest2");
@@ -50,7 +50,7 @@ class ActionComposeeTest {
     }
     
     @Test
-    void testValueNotExistForDate() {
+    public void testValueNotExistForDate() {
         //Arrange
         final ActionSimple Default_AS1 = new ActionSimple("ActionSimpleTest1");
         final ActionSimple Default_AS2 = new ActionSimple("ActionSimpleTest2");
