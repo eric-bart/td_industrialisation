@@ -37,9 +37,14 @@ public class ActionSimple extends Action {
 
     // enrg possible si pas de cours pour ce jour
     public void enrgCours(Jour j, float v) {
+        if (v <= 0)
+            throw new IllegalArgumentException("La valeur du cours ne peut pas être négative.");
+        
         if (this.mapCours.containsKey(j) == false) {
             this.mapCours.put(j, new Cours(j, v));
         }
+        else 
+            throw new IllegalArgumentException("Une valeur est déjà enregistrée pour ce jour.");
     }
 
     @Override
