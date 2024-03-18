@@ -17,6 +17,8 @@ package tp04.metier;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,6 +28,7 @@ public class ActionSimple extends Action {
 
     // attribut lien
     private Map<Jour, Cours> mapCours;
+    private static List<ActionSimple> listeActionsSimples = new ArrayList<>();
 
     // constructeur
     public ActionSimple(String libelle) {
@@ -33,6 +36,7 @@ public class ActionSimple extends Action {
         super(libelle);
         // init spécifique
         this.mapCours = new HashMap();
+        listeActionsSimples.add(this);
     }
 
     // enrg possible si pas de cours pour ce jour
@@ -76,6 +80,15 @@ public class ActionSimple extends Action {
         } catch(Exception e) {
             return "Il n'existe pas de cours pour cette valeur";
         }
+    }
+    
+    /**
+     * Return list of buyable ActionSimple
+     * @author Samuel
+     * @return List<ActionSimple>
+     */
+    public static List<ActionSimple> consulterActionsSimpleAchetables() {
+        return listeActionsSimples;
     }
     
 }
