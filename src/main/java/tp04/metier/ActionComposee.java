@@ -30,6 +30,7 @@ public class ActionComposee extends Action {
     public ActionComposee(String libelle) {
         super(libelle);
         this.mapPanier = new HashMap();
+        Bourse.getBourse().listeActionsComposees.add(this);
     }
 
     public void enrgComposition(ActionSimple as, float pourcentage) throws IllegalArgumentException{
@@ -45,7 +46,11 @@ public class ActionComposee extends Action {
             throw new IllegalArgumentException("Pourcentage trop élevé");
         }
     }
-
+/**
+ * 
+ * @param j
+ * @return 
+ */
     @Override
     public float valeur(Jour j) {
         try {

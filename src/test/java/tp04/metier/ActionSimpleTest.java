@@ -29,6 +29,9 @@ public class ActionSimpleTest {
     private static final int DEFAULT_YEAR = 1901;
     private static final float DEFAULT_ACTIONSIMPLE_VALUE = 100.01f;
     
+    /**
+     * @author Gauthier, Mortadha et Lothaire
+     */
     @Test
     public void testAcheterActionSimple() {
         //Arrange
@@ -46,6 +49,9 @@ public class ActionSimpleTest {
         
     }
     
+    /**
+     * @author Gauthier, Mortadha et Lothaire
+     */
     @Test
     public void testVendreActionSimple() {
         //Arrange
@@ -167,22 +173,25 @@ public class ActionSimpleTest {
     
     /**
     * Tests Creating multiple Actions and checking that the static method returns all of them
-    * @author noeCollongues
+    * @author noeCollongues modified by Mortadha, Lothaire et Gauthier
     */
     @Test
     void testActionListUpdatedShouldSucceed() {
+        Bourse bourse = Bourse.getBourse();
+        bourse.resetListeActionsSimples();
         final ActionSimple auchan = new ActionSimple("Auchan");
         final ActionSimple micromania = new ActionSimple("Micromania");
         final ActionSimple disney = new ActionSimple("Disney");
         
+        System.out.println(bourse.listeActionsSimples);
         //Arrange
        ArrayList<ActionSimple> listActions = new ArrayList<ActionSimple>();
         listActions.add(auchan);
         listActions.add(micromania);
         listActions.add(disney);
-
+    System.out.println(listActions);
 
         //Assert
-        Assertions.assertTrue(ActionSimple.consulterActionsSimpleAchetables().equals(listActions), "Liste des actions consultables différentes de celles insérées.");
+       Assertions.assertTrue(bourse.listeActionsSimples.equals(listActions), "Liste des actions consultables différentes de celles insérées.");
     }
 }
