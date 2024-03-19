@@ -185,4 +185,22 @@ public class ActionSimpleTest {
         //Assert
         Assertions.assertTrue(ActionSimple.consulterActionsSimpleAchetables().equals(listActions), "Liste des actions consultables différentes de celles insérées.");
     }
+    
+    /**
+    * @author noeCollongues
+    */
+    @Test
+    void testActionSimpleEvolution() {
+        final ActionSimple auchan = new ActionSimple("Auchan");
+        Jour j1 = new Jour(2000, 1);
+        Jour j2 = new Jour(2000, 2);
+        
+        //Arrange
+       auchan.enrgCours(j1, 50.00f);
+       auchan.enrgCours(j2, 60.00f);
+
+
+        //Assert
+        Assertions.assertEquals( 20.00f, auchan.comparerCours(j1, j2), "Should have a 20% evolution between j1 and j2");
+    }
 }
