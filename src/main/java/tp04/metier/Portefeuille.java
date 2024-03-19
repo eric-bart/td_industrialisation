@@ -101,4 +101,20 @@ public class Portefeuille {
     public void displayQuantiteAction(String actionName) {
         System.out.println(getQuantiteActionMessage(actionName));
     }
+    
+    /**
+     * Retourne une chaîne de caractère récapitulant la composition d'une action composée (Nom action simple + Pourcentage associé)
+     * @author Eric B
+     * @param actionName nom de l'action dont il faut récupérer la composition
+     * @return la chaîne de caractère qui récapitule la composition
+     */
+    public String displayCompositionActionComposee(String actionName) {
+        for (Map.Entry<Action, Integer> entry : this.mapActions.entrySet()) {
+            Action action = entry.getKey();
+            if (action instanceof ActionComposee && action.getLibelle().equals(actionName)) {
+                return ((ActionComposee) action).getCompositionActionComposeeWithPercentage();
+            }
+        }
+        return "L'action composée " + actionName + " n'est pas présente dans le portefeuille.";
+    }
 }
