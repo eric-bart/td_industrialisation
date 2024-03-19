@@ -17,9 +17,9 @@ package tp04.metier;
 
 /**
  *
- * @author somebody
+ * @author noeCollongues
  */
-public class Jour {
+public class Jour implements Comparable<Jour>{
 
     private static final int CORRECT_MIN_YEAR = 1901;
     private static final int CORRECT_MIN_DAY = 0;
@@ -95,6 +95,20 @@ public class Jour {
     @Override
     public String toString() {
         return "Jour{" + "annee=" + annee + ", noJour=" + noJour + '}';
+    }
+    
+    
+    /**
+    * Compare method, returns positive int if j1>j2, negative if j2<j1 and 0 if equals.
+    * @author noeCollongues
+    */
+    @Override
+    public int compareTo(Jour j2){
+        if(this.equals(j2)) return 0;
+        else if (this.annee > j2.annee) return 1;
+        else if (this.annee < j2.annee) return -1;
+        else if (this.noJour > j2.noJour) return 1;
+        else return -1;
     }
 
 }
