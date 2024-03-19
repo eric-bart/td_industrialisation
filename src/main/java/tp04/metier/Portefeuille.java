@@ -104,6 +104,7 @@ public class Portefeuille {
     
     /**
      * Retourne une chaîne de caractère récapitulant la composition d'une action composée (Nom action simple + Pourcentage associé)
+     * @author Eric B
      * @param actionName nom de l'action dont il faut récupérer la composition
      * @return la chaîne de caractère qui récapitule la composition
      */

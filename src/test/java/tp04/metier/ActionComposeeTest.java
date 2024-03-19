@@ -16,6 +16,7 @@
 package tp04.metier;
 
 import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -98,6 +99,24 @@ public class ActionComposeeTest {
         portefeuille.acheter(action_composee, 2);
         portefeuille.vendre(action_composee, 1);
         
+    }
+    
+    @Test
+    public void testRecupererListeActionSimpleListeVide() {
+        ActionComposee actionComposee = new ActionComposee("France télévision");
+        
+        Portefeuille portefeuille = new Portefeuille();
+        portefeuille.acheter(actionComposee, 2);
+        assertEquals(0, actionComposee.getCompositionActionComposee().size());
+    }
+    
+    @Test
+    public void testRecupererListeActionSimpleListeNonVide() {
+        ActionComposee actionComposee = new ActionComposee("France télévision");
+        actionComposee.enrgComposition(new ActionSimple("France 2"), 100.0f);
+        Portefeuille portefeuille = new Portefeuille();
+        portefeuille.acheter(actionComposee, 2);
+        assertEquals(1, actionComposee.getCompositionActionComposee().size());
     }
 
 }

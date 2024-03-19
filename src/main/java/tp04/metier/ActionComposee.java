@@ -78,6 +78,7 @@ public class ActionComposee extends Action {
     
     /**
      * Retourne une liste d'actions simples, contenues dans l'action composée.
+     * @author Eric B
      * @return la liste d'actions simples
      */
     public List<ActionSimple> getCompositionActionComposee() {
@@ -86,6 +87,7 @@ public class ActionComposee extends Action {
     
     /**
      * Construit et retourne une chaîne de caractère correspondant à l'ensemble des actions simples associées à leur pourcentage
+     * @author Eric B
      * @return la chaîne de caractère
      */
     public String getCompositionActionComposeeWithPercentage() {
