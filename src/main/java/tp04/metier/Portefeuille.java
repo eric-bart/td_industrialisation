@@ -103,6 +103,28 @@ public class Portefeuille {
     }
     
     /**
+     * Générer le msg de la composition du portefeuille
+     * @author CMED
+     * @return str
+     */
+    public String getAllActionMessage() {
+        String str = "";
+        
+        for (Action ac : mapActions.keySet()) {
+            str += ac.getLibelle() + ", quantitée : " + mapActions.get(ac) + "\n";
+        }
+        
+        return str;
+    }
+    
+    /**
+     * Afficher la composition du portefeuille
+     * @author CMED
+     */
+    public void printAllAction() {
+        System.out.print(getAllActionMessage());
+    }
+  
      * Retourne une chaîne de caractère récapitulant la composition d'une action composée (Nom action simple + Pourcentage associé)
      * @author Eric B
      * @param actionName nom de l'action dont il faut récupérer la composition
