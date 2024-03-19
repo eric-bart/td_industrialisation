@@ -158,7 +158,15 @@ public class ActionComposeeTest {
         action_composee_test.enrgComposition(micromania, 50);
         action_composee_test.enrgComposition(disney, 10);
         //Assert
-        //to do quand l'user story 9 sera faite
+        action_composee_test.enregistrerCours(DEFAULT_JOUR, valeursActionsSimple);
+        for (ActionSimple action : action_composee_test.getCompositionActionComposee()) {
+            if (action.getLibelle()=="auchan")
+                Assertions.assertEquals(action.getCoursForDateToString(DEFAULT_JOUR), "Cours pour le jour : 5.0");
+            else if (action.getLibelle()=="micromania")
+                Assertions.assertEquals(action.getCoursForDateToString(DEFAULT_JOUR), "Cours pour le jour : 10.0");
+            else if (action.getLibelle()=="disney")
+                Assertions.assertEquals(action.getCoursForDateToString(DEFAULT_JOUR), "Cours pour le jour : 15.0");
+        }
     }
 
     @Test
