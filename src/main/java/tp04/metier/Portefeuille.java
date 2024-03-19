@@ -18,11 +18,13 @@ package tp04.metier;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  *
  * @author somebody
  */
 public class Portefeuille {
+  
     Map<Action,Integer> mapActions;
 
     public Portefeuille() {
@@ -46,6 +48,8 @@ public class Portefeuille {
             } else{
                 throw new IllegalArgumentException("Vous n'avez pas assez d'actions en stock pour vendre la quantité saisie");
             }
+        } else{
+            throw new IllegalArgumentException("Vous n'avez pas d'actions");
         }
     }
 
@@ -60,6 +64,7 @@ public class Portefeuille {
             }
         return total;
     }
+
     /**
      * Retourne la quantité d'action simple ou composée dans le portefeuille pour une action donnée
      * @author Eric B

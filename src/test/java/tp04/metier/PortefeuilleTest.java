@@ -40,7 +40,7 @@ public class PortefeuilleTest {
         Assertions.assertEquals(3, portefeuille.getQuantiteAction("Carrefour"));
         Assertions.assertEquals("Vous disposez de 3 actions pour Carrefour", portefeuille.getQuantiteActionMessage("Carrefour"));
     }
-    
+
     @Test
     public void testRecuperationNombreActionComposeePresente() {
         Portefeuille portefeuille = new Portefeuille();
@@ -50,4 +50,3 @@ public class PortefeuilleTest {
     
     }
 }
-

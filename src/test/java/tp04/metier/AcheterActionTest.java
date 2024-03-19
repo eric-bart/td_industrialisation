@@ -53,11 +53,11 @@ public class AcheterActionTest {
 
         portefeuille.vendre(action_simple, 2);
         Assertions.assertEquals(portefeuille.mapActions.get(action_simple), 3);
-        portefeuille.vendre(action_simple, 2);
+        
+        portefeuille.vendre(action_simple, 3);
         Assertions.assertThrows(IllegalArgumentException.class,() -> portefeuille.vendre(action_simple, 100));
         
         portefeuille.acheter(action_simple, 5);
         Assertions.assertThrows(IllegalArgumentException.class,() -> portefeuille.vendre(action_simple, 100));
-    
     }
 }
