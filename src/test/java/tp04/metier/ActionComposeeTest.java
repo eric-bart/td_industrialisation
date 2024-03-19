@@ -66,4 +66,38 @@ public class ActionComposeeTest {
         //Assert
         Assertions.assertEquals(expectedValue, currentValue, "Returned values are wrong");
     }
+         
+    @Test
+    public void testAcheterActionComposee() {
+        //Arrange
+        ActionSimple action_simple = new ActionSimple("Action Test");
+        ActionSimple action_simple_2 = new ActionSimple("Action Test_2");
+        ActionComposee action_composee = new ActionComposee("Action composee Test");
+        //Action
+        Portefeuille portefeuille = new Portefeuille();
+        action_composee.enrgComposition(action_simple, 20.0f);
+        action_composee.enrgComposition(action_simple_2, 80.0f);
+        Assertions.assertThrows(IllegalArgumentException.class,() -> action_composee.enrgComposition(action_simple_2, 40.0f));
+
+        
+        portefeuille.acheter(action_composee, 5);
+            
+        //Assert
+        Assertions.assertEquals(portefeuille.mapActions.get(action_composee), 5);
+        portefeuille.acheter(action_composee, 2);
+        Assertions.assertEquals(portefeuille.mapActions.get(action_composee), 7);
+    
+        
+    }
+    
+    @Test
+    public void testVendreActionComposee(){
+        ActionComposee action_composee = new ActionComposee("Action composee Test");
+        //Action
+        Portefeuille portefeuille = new Portefeuille();
+        portefeuille.acheter(action_composee, 2);
+        portefeuille.vendre(action_composee, 1);
+        
+    }
+
 }
