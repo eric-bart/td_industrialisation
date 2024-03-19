@@ -50,7 +50,6 @@ public class ActionComposee extends Action {
     public float valeur(Jour j) {
         try {
             float valeur;
-
             valeur = 0;
             for (ActionSimple as : this.mapPanier.keySet()) {
                 valeur = valeur + (as.valeur(j) * this.mapPanier.get(as));

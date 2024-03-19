@@ -64,18 +64,20 @@ public class Portefeuille {
             }
         return total;
     }
-    
+
     /**
-     * Retourne la quantité d'action simple dans le portefeuille pour une action donnée
+     * Retourne la quantité d'action simple ou composée dans le portefeuille pour une action donnée
      * @author Eric B
      * @param actionName le nom de l'action pour laquelle récupérer la quantité enregistrée
      * @return la quantité d'action disponible pour le nom d'action passé en paramètre
      */
     public int getQuantiteAction(String actionName) {
-        if(this.mapActions.get(new ActionSimple(actionName)) != null) {
-            return this.mapActions.get(new ActionSimple(actionName));
+        Integer quantite = this.mapActions.get(new ActionSimple(actionName));
+        if (quantite != null) {
+            return quantite;
         }
-        return 0;
+        quantite = this.mapActions.get(new ActionComposee(actionName));
+        return quantite != null ? quantite : 0;
     }
     
     /**
