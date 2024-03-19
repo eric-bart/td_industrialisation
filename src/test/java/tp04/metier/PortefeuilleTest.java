@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Assertions;
 public class PortefeuilleTest {
     
     @Test
-    public void testRecuperationNombreActionSimpleNonPresente() {
+    void testRecuperationNombreActionSimpleNonPresente() {
         Portefeuille portefeuille = new Portefeuille();
         Assertions.assertEquals(0, portefeuille.getQuantiteAction("Carrefour"));
         Assertions.assertEquals(0, portefeuille.getQuantiteAction("Auchan"));
@@ -34,7 +34,7 @@ public class PortefeuilleTest {
     }
     
     @Test
-    public void testRecuperationNombreActionSimplePresente() {
+    void testRecuperationNombreActionSimplePresente() {
         Portefeuille portefeuille = new Portefeuille();
         portefeuille.acheter(new ActionSimple("Carrefour"), 3);
         Assertions.assertEquals(3, portefeuille.getQuantiteAction("Carrefour"));
