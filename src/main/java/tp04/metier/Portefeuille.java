@@ -99,4 +99,27 @@ public class Portefeuille {
     public void displayQuantiteAction(String actionName) {
         System.out.println(getQuantiteActionMessage(actionName));
     }
+    
+    /**
+     * Générer le msg de la composition du portefeuille
+     * @author CMED
+     * @return str
+     */
+    public String getAllActionMessage() {
+        String str = "";
+        
+        for (Action ac : mapActions.keySet()) {
+            str += ac.getLibelle() + ", quantitée : " + mapActions.get(ac) + "\n";
+        }
+        
+        return str;
+    }
+    
+    /**
+     * Afficher la composition du portefeuille
+     * @author CMED
+     */
+    public void printAllAction() {
+        System.out.print(getAllActionMessage());
+    }
 }
