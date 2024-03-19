@@ -64,4 +64,39 @@ public class Portefeuille {
             }
         return total;
     }
+    
+    /**
+     * Retourne la quantité d'action simple dans le portefeuille pour une action donnée
+     * @author Eric B
+     * @param actionName le nom de l'action pour laquelle récupérer la quantité enregistrée
+     * @return la quantité d'action disponible pour le nom d'action passé en paramètre
+     */
+    public int getQuantiteAction(String actionName) {
+        if(this.mapActions.get(new ActionSimple(actionName)) != null) {
+            return this.mapActions.get(new ActionSimple(actionName));
+        }
+        return 0;
+    }
+    
+    /**
+     * Retourne une chaîne de caractère correspondant à la quantité d'action détenue pour une action donnée.
+     * @author Eric B
+     * @param actionName le nom de l'action pour laquelle on souhaite recueillir les informations de quantité
+     * @return la chaîne de caractère
+     */
+    public String getQuantiteActionMessage(String actionName) {
+        if(getQuantiteAction(actionName) != 0) {
+            return "Vous disposez de " + getQuantiteAction(actionName) + " actions pour " + actionName;
+        }
+        return "Vous ne disposez pas d'action pour " + actionName;
+    }
+    
+    /**
+     * Affichage du message de quantité d'action pour un nom d'action donné.
+     * @author Eric B
+     * @param actionName le nom de l'action pour laquelle on souhaite afficher le message 
+     */
+    public void displayQuantiteAction(String actionName) {
+        System.out.println(getQuantiteActionMessage(actionName));
+    }
 }

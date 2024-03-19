@@ -58,10 +58,5 @@ public class AcheterActionTest {
         
         portefeuille.acheter(action_simple, 5);
         Assertions.assertThrows(IllegalArgumentException.class,() -> portefeuille.vendre(action_simple, 100));
-    
-        
     }
-    
-    
-
 }
