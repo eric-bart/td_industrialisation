@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 clement, Noé.
+ * Copyright 2024 Mortadha Boubaker.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,52 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test class for ActionSimple's enrgCours method.
- * 
- * @author noeCollongues
+ *
+ * @author Mortadha Boubaker
  */
 public class ActionSimpleTest {
+    
     private static final int DEFAULT_DAY = 1;
     private static final int DEFAULT_YEAR = 1901;
     private static final float DEFAULT_ACTIONSIMPLE_VALUE = 100.01f;
+    
+    @Test
+    public void testAcheterActionSimple() {
+        //Arrange
+        ActionSimple action_simple = new ActionSimple("Action Test");
+        //Action
+        Portefeuille portefeuille = new Portefeuille();
+        
+        portefeuille.acheter(action_simple, 5);
+             
+        //Assert
+        Assertions.assertEquals(portefeuille.mapActions.get(action_simple), 5);
+        portefeuille.acheter(action_simple, 2);
+        Assertions.assertEquals(portefeuille.mapActions.get(action_simple), 7);
+    
+        
+    }
+    
+    @Test
+    public void testVendreActionSimple() {
+        //Arrange
+        ActionSimple action_simple = new ActionSimple("Action Test");
+        //Action
+        Portefeuille portefeuille = new Portefeuille();
+        
+        portefeuille.acheter(action_simple, 5);
+             
+
+        portefeuille.vendre(action_simple, 2);
+        Assertions.assertEquals(portefeuille.mapActions.get(action_simple), 3);
+        portefeuille.vendre(action_simple, 2);
+        Assertions.assertThrows(IllegalArgumentException.class,() -> portefeuille.vendre(action_simple, 100));
+        
+        portefeuille.acheter(action_simple, 5);
+        Assertions.assertThrows(IllegalArgumentException.class,() -> portefeuille.vendre(action_simple, 100));
+    
+        
+    }
     
     /**
      * Tests proper Cours value assignment to a day, assignment should succeed.
@@ -35,7 +73,7 @@ public class ActionSimpleTest {
      * @author noeCollongues
      */
     @Test
-    void testValidAssignmentValueShouldSucceed() {
+    public void testValidAssignmentValueShouldSucceed() {
         //Creating test variables
         final float testValue = (float) 2.00;
         final ActionSimple action = new ActionSimple("actionTest");
@@ -53,7 +91,7 @@ public class ActionSimpleTest {
     * @author noeCollongues
     */
     @Test
-    void testValueAlreadyExistsForDayShouldFail() {
+    public void testValueAlreadyExistsForDayShouldFail() {
         //Creating test variables
         final float testValue1 = (float) 2.00;
         final float testValue2 = (float) 3.00;
@@ -76,7 +114,7 @@ public class ActionSimpleTest {
     * @author noeCollongues
     */
     @Test
-    void testNegativeValueShouldFail() {
+    public void testNegativeValueShouldFail() {
         //Creating test variables
         final float testValue = (float) -2.00;
         final ActionSimple action = new ActionSimple("actionTest");
@@ -95,7 +133,7 @@ public class ActionSimpleTest {
     * @author clement
     */
     @Test
-    void testValueExistForDate() {
+    public void testValueExistForDate() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
         final ActionSimple actionSimple = new ActionSimple("TestActionSimple");
@@ -114,7 +152,7 @@ public class ActionSimpleTest {
     * @author clement
     */
     @Test
-    void testValueNotExistForDate() {
+    public void testValueNotExistForDate() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
         final ActionSimple actionSimple = new ActionSimple("TestActionSimple");
