@@ -16,6 +16,7 @@
 package tp04.metier;
 
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +25,10 @@ import org.junit.jupiter.api.Test;
  * @author Lothaire Bailly
  */
 public class ActionComposeeTest {
-     
+    
+    /**
+     * @author Gauthier, Mortadha et Lothaire
+     */
     @Test
     public void testAcheterActionComposee() {
         //Arrange
@@ -48,6 +52,9 @@ public class ActionComposeeTest {
         
     }
     
+    /**
+     * @author Gauthier, Mortadha et Lothaire
+     */
     @Test
     public void testVendreActionComposee(){
         ActionComposee action_composee = new ActionComposee("Action composee Test");
@@ -55,21 +62,27 @@ public class ActionComposeeTest {
         Portefeuille portefeuille = new Portefeuille();
         portefeuille.acheter(action_composee, 2);
         portefeuille.vendre(action_composee, 1);
+        Assertions.assertEquals(1, portefeuille.mapActions.get(action_composee));
         
     }
-        @Test
-        void testActionListUpdatedShouldSucceed() {
+    /**
+     * @author Noe collongues modified by Mortadha, Lothaire et Gauthier
+     */
+    @Test
+    void testActionListUpdatedShouldSucceed() {
+        Bourse bourse = Bourse.getBourse();
+        bourse.resetListeActionsComposees();
         final ActionComposee auchan = new ActionComposee("Auchan");
         final ActionComposee micromania = new ActionComposee("Micromania");
         final ActionComposee disney = new ActionComposee("Disney");
-        
-        //Arrange
-        Bourse bourse = Bourse.getBourse();
-        bourse.listeActionsComposees.add(auchan);
-        bourse.listeActionsComposees.add(micromania);
-        bourse.listeActionsComposees.add(disney);
+
+        List<ActionComposee> listeActionsComposeesTest = new ArrayList<>();
+        listeActionsComposeesTest.add(auchan);
+        listeActionsComposeesTest.add(micromania);
+        listeActionsComposeesTest.add(disney);
+
 
         //Assert
-        Assertions.assertTrue(bourse.listeActionsComposees.equals(listActions), "Liste des actions consultables différentes de celles insérées.");
+        Assertions.assertTrue(bourse.listeActionsComposees.equals(listeActionsComposeesTest), "Liste des actions consultables différentes de celles insérées.");
     }
 }

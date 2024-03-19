@@ -46,7 +46,11 @@ public class ActionComposee extends Action {
             throw new IllegalArgumentException("Pourcentage trop élevé");
         }
     }
-
+/**
+ * 
+ * @param j
+ * @return 
+ */
     @Override
     public float valeur(Jour j) {
         float valeur;

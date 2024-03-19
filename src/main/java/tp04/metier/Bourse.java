@@ -40,5 +40,11 @@ public class Bourse {
         return instance;
     }
     
+    public void resetListeActionsSimples(){
+        this.listeActionsSimples.clear();
+    }
+    public void resetListeActionsComposees(){
+        this.listeActionsComposees.clear();
+    }
 
 }

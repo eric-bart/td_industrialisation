@@ -28,7 +28,6 @@ public class ActionSimple extends Action {
 
     // attribut lien
     private Map<Jour, Cours> mapCours;
-    private static List<ActionSimple> listeActionsSimples = new ArrayList<>();
 
     // constructeur
     public ActionSimple(String libelle) {
@@ -83,13 +82,5 @@ public class ActionSimple extends Action {
         }
     }
     
-    /**
-     * Return list of buyable ActionSimple
-     * @author Samuel
-     * @return List<ActionSimple>
-     */
-    public static List<ActionSimple> consulterActionsSimpleAchetables() {
-        return listeActionsSimples;
-    }
     
 }
