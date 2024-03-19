@@ -86,4 +86,54 @@ public class JourTest {
         Assertions.assertEquals(DEFAULT_YEAR, jour.getAnnee(), "Annee should be 1901");
         Assertions.assertEquals(DEFAULT_DAY, jour.getNoJour(), "noJour should be 1");
     }
+    
+    @Test
+    public void testComparisonDaySuperiorSameYear() {
+        //Arrange
+        final Jour j1 = new Jour(2000, 12);
+        final Jour j2 = new Jour(2000, 11);
+        
+        //Asserts
+        Assertions.assertTrue(j1.compareTo(j2)>0, "j1 devrait être supérieur à j2");
+    }
+    
+    @Test
+    public void testComparisonDaySuperiorDifferentYear() {
+        //Arrange
+        final Jour j1 = new Jour(2001, 12);
+        final Jour j2 = new Jour(2000, 11);
+        
+        //Asserts
+        Assertions.assertTrue(j1.compareTo(j2)>0, "j1 devrait être supérieur à j2");
+    }
+    
+    @Test
+    public void testComparisonDayInferiorSameYear() {
+        //Arrange
+        final Jour j1 = new Jour(2000, 10);
+        final Jour j2 = new Jour(2000, 11);
+        
+        //Asserts
+        Assertions.assertTrue(j1.compareTo(j2)<0, "j1 devrait être inférieur à j2");
+    }
+    
+    @Test
+    public void testComparisonDayInferiorDifferentYear() {
+        //Arrange
+        final Jour j1 = new Jour(1999, 10);
+        final Jour j2 = new Jour(2000, 11);
+        
+        //Asserts
+        Assertions.assertTrue(j1.compareTo(j2)<0, "j1 devrait être inférieur à j2");
+    }
+    
+    @Test
+    public void testComparisonDayEquals() {
+        //Arrange
+        final Jour j1 = new Jour(1999, 10);
+        final Jour j2 = new Jour(1999, 10);
+        
+        //Asserts
+        Assertions.assertTrue(j1.compareTo(j2)==0, "j1 devrait être égal à j2");
+    }
 }
