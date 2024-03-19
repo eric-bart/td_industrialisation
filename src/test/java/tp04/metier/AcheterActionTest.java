@@ -34,9 +34,9 @@ public class AcheterActionTest {
         portefeuille.acheter(action_simple, 5);
              
         //Assert
-        Assertions.assertEquals(portefeuille.mapLignes.get(action_simple), 5);
+        Assertions.assertEquals(portefeuille.mapActions.get(action_simple), 5);
         portefeuille.acheter(action_simple, 2);
-        Assertions.assertEquals(portefeuille.mapLignes.get(action_simple), 7);
+        Assertions.assertEquals(portefeuille.mapActions.get(action_simple), 7);
     
         
     }
@@ -52,7 +52,7 @@ public class AcheterActionTest {
              
 
         portefeuille.vendre(action_simple, 2);
-        Assertions.assertEquals(portefeuille.mapLignes.get(action_simple), 3);
+        Assertions.assertEquals(portefeuille.mapActions.get(action_simple), 3);
         portefeuille.vendre(action_simple, 3);
         Assertions.assertThrows(IllegalArgumentException.class,() -> portefeuille.vendre(action_simple, 100));
         
