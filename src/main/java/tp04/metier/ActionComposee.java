@@ -103,4 +103,26 @@ public class ActionComposee extends Action {
         });
         return strBuilder.toString();
     }
+
+    /**
+     * Enregistre le cours des actions simples composant l'action pour un jour donné
+     * @author samuelGardies
+     * @param j jour
+     * @param valeursActionsSimples : contient la valeur de chaque actions simple
+     */
+    public void enregistrerCours(Jour j, HashMap<ActionSimple,Float> valeursActionsSimples) {
+        try {
+            for (ActionSimple action : valeursActionsSimples.keySet()) {
+                //enregistre le cours seulement si l'action est bien présente dans l'action composée
+                if (mapPanier.keySet().contains(action))
+                    action.enrgCours(j, valeursActionsSimples.get(action));
+                else 
+                    throw new IllegalArgumentException("L'action " + action.getLibelle() + "n'est pas présente dans cette action composée");
+                    
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Erreur dans l'enregistrement du cours");
+        }
+    }
+
 }

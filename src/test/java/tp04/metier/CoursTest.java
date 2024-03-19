@@ -29,7 +29,7 @@ public class CoursTest {
     private static final float DEFAULT_INCORRECT_VALUE = -1;
     
     @Test
-    public void testConstructorParametersAreCorrectSuccess() {
+    void testConstructorParametersAreCorrectSuccess() {
         //Arrange
         final Cours cours = new Cours(DEFAULT_JOUR, DEFAULT_CORRECT_VALUE);
 
@@ -42,7 +42,7 @@ public class CoursTest {
     }
     
     @Test
-    public void testConstructorParametersIncorrectShouldFail() {
+    void testConstructorParametersIncorrectShouldFail() {
         //Arrange
         final String expectedMessage = "aValeur must be greater or equal to 0";
         //Action and asserts

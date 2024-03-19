@@ -31,7 +31,7 @@ public class PortefeuilleTest {
 
     
     @Test
-    public void testRecuperationNombreActionNonPresente() {
+    void testRecuperationNombreActionSimpleNonPresente() {
         Portefeuille portefeuille = new Portefeuille();
         Assertions.assertEquals(0, portefeuille.getQuantiteAction("Carrefour"));
         Assertions.assertEquals(0, portefeuille.getQuantiteAction("Auchan"));
@@ -40,7 +40,7 @@ public class PortefeuilleTest {
     }
     
     @Test
-    public void testRecuperationNombreActionSimplePresente() {
+    void testRecuperationNombreActionSimplePresente() {
         Portefeuille portefeuille = new Portefeuille();
         portefeuille.acheter(new ActionSimple("Carrefour"), 3);
         Assertions.assertEquals(3, portefeuille.getQuantiteAction("Carrefour"));
@@ -48,7 +48,7 @@ public class PortefeuilleTest {
     }
     
     @Test
-    public void testAffichageCompositionPortefeuille() {
+    void testAffichageCompositionPortefeuille() {
         // Arrange
         DEFAULT_PORTEFEUILLE.acheter(DEFAULT_AS1, 1);
         DEFAULT_PORTEFEUILLE.acheter(DEFAULT_AS2, 2);
@@ -64,7 +64,7 @@ public class PortefeuilleTest {
     }
 
     @Test
-    public void testRecuperationNombreActionComposeePresente() {
+    void testRecuperationNombreActionComposeePresente() {
         Portefeuille portefeuille = new Portefeuille();
         portefeuille.acheter(new ActionComposee("Carrefour"), 3);
         Assertions.assertEquals(3, portefeuille.getQuantiteAction("Carrefour"));
@@ -72,7 +72,7 @@ public class PortefeuilleTest {
     }
     
      @Test
-    public void testGetCompositionActionComposeePresent() {
+    void testGetCompositionActionComposeePresent() {
         // Création du portefeuille
         Portefeuille portefeuille = new Portefeuille();
 
@@ -98,7 +98,7 @@ public class PortefeuilleTest {
     }
 
     @Test
-    public void testGetCompositionActionComposeeAbsent() {
+    void testGetCompositionActionComposeeAbsent() {
         // Création du portefeuille
         Portefeuille portefeuille = new Portefeuille();
         

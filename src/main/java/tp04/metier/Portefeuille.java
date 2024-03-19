@@ -124,7 +124,7 @@ public class Portefeuille {
     public void printAllAction() {
         System.out.print(getAllActionMessage());
     }
-    
+
     /**
      * Retourne une chaîne de caractère récapitulant la composition d'une action composée (Nom action simple + Pourcentage associé)
      * @author Eric B

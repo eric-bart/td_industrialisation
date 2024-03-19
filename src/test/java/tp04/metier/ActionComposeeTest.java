@@ -20,6 +20,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+import java.util.HashMap;
 
 /**
  *
@@ -38,7 +39,7 @@ public class ActionComposeeTest {
     private static final Jour DEFAULT_JOUR = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
     
     @Test
-    public void testValueExistForDate() {
+    void testValueExistForDate() {
         //Arrange
         final ActionSimple Default_AS1 = new ActionSimple("ActionSimpleTest1");
         final ActionSimple Default_AS2 = new ActionSimple("ActionSimpleTest2");
@@ -57,7 +58,7 @@ public class ActionComposeeTest {
     }
     
     @Test
-    public void testValueNotExistForDate() {
+    void testValueNotExistForDate() {
         //Arrange
         final ActionSimple Default_AS1 = new ActionSimple("ActionSimpleTest1");
         final ActionSimple Default_AS2 = new ActionSimple("ActionSimpleTest2");
@@ -75,7 +76,7 @@ public class ActionComposeeTest {
     }
 
     @Test
-    public void testAcheterActionComposee() {
+    void testAcheterActionComposee() {
         //Arrange
         ActionSimple action_simple = new ActionSimple("Action Test");
         ActionSimple action_simple_2 = new ActionSimple("Action Test_2");
@@ -101,7 +102,7 @@ public class ActionComposeeTest {
      * @author Gauthier, Mortadha et Lothaire
      */
     @Test
-    public void testVendreActionComposee(){
+    void testVendreActionComposee(){
         ActionComposee action_composee = new ActionComposee("Action composee Test");
         //Action
         Portefeuille portefeuille = new Portefeuille();
@@ -111,6 +112,63 @@ public class ActionComposeeTest {
         
     }
     
+    /**
+     * Tests ActionComposee enregistrerCours() avec une action ne faisant pas partie de l'action composée
+     * 
+     * @author samuelGardies
+     */
+    @Test
+    void testEnregistrerCoursWrongAction() {
+        //Arrange
+        ActionComposee action_composee_test = new ActionComposee("Action composee Test");
+        final ActionSimple auchan = new ActionSimple("Auchan");
+        final ActionSimple micromania = new ActionSimple("Micromania");
+        final ActionSimple disney = new ActionSimple("Disney");
+        final ActionSimple mauvaiseAction = new ActionSimple("mauvaiseAction");
+        //Action
+        HashMap<ActionSimple,Float> valeursActionsSimple = new HashMap<ActionSimple,Float>();
+        valeursActionsSimple.put(auchan, 5.0f);
+        valeursActionsSimple.put(micromania, 10.0f);
+        valeursActionsSimple.put(mauvaiseAction, 15.0f);
+        action_composee_test.enrgComposition(auchan, 40);
+        action_composee_test.enrgComposition(micromania, 50);
+        action_composee_test.enrgComposition(disney, 10);
+        //Assert
+        Assertions.assertThrows(IllegalArgumentException.class, () -> action_composee_test.enregistrerCours(DEFAULT_JOUR, valeursActionsSimple));    
+    }
+    
+    /**
+     * Tests ActionComposee enregistrerCours() valide
+     * 
+     * @author samuelGardies
+     */
+    @Test
+    void testEnregistrerCoursValid() {
+        //Arrange
+        ActionComposee action_composee_test = new ActionComposee("Action composee Test");
+        final ActionSimple auchan = new ActionSimple("Auchan");
+        final ActionSimple micromania = new ActionSimple("Micromania");
+        final ActionSimple disney = new ActionSimple("Disney");
+        //Action
+        HashMap<ActionSimple,Float> valeursActionsSimple = new HashMap<ActionSimple,Float>();
+        valeursActionsSimple.put(auchan, 5.0f);
+        valeursActionsSimple.put(micromania, 10.0f);
+        valeursActionsSimple.put(disney, 15.0f);
+        action_composee_test.enrgComposition(auchan, 40);
+        action_composee_test.enrgComposition(micromania, 50);
+        action_composee_test.enrgComposition(disney, 10);
+        //Assert
+        action_composee_test.enregistrerCours(DEFAULT_JOUR, valeursActionsSimple);
+        for (ActionSimple action : action_composee_test.getCompositionActionComposee()) {
+            if (action.getLibelle()=="auchan")
+                Assertions.assertEquals(action.getCoursForDateToString(DEFAULT_JOUR), "Cours pour le jour : 5.0");
+            else if (action.getLibelle()=="micromania")
+                Assertions.assertEquals(action.getCoursForDateToString(DEFAULT_JOUR), "Cours pour le jour : 10.0");
+            else if (action.getLibelle()=="disney")
+                Assertions.assertEquals(action.getCoursForDateToString(DEFAULT_JOUR), "Cours pour le jour : 15.0");
+        }
+    }
+
     @Test
     public void testRecupererListeActionSimpleListeVide() {
         ActionComposee actionComposee = new ActionComposee("France télévision");

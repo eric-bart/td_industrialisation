@@ -36,7 +36,7 @@ public class JourTest {
     }
 
     @Test
-    public void testConstructorParametersAreCorrectSuccess() {
+    void testConstructorParametersAreCorrectSuccess() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
         //Action
@@ -47,7 +47,7 @@ public class JourTest {
     }
 
     @Test
-    public void testConstructorDayIncorrectShouldFail() {
+    void testConstructorDayIncorrectShouldFail() {
         //Arrange
         final String expectedMessage = "noJour must be greater than 0 and lower or equal to 366";
         //Action and asserts
@@ -66,7 +66,7 @@ public class JourTest {
     }
     
     @Test
-    public void testConstructorYearIncorrectShouldFail() {
+    void testConstructorYearIncorrectShouldFail() {
         //Arrange
         final String expectedMessage = "annee must be greater than 1901";
         //Action and asserts
@@ -78,7 +78,7 @@ public class JourTest {
     }
     
     @Test
-    public void testGetShouldReturnValues() {
+    void testGetShouldReturnValues() {
         //Arrange
         final Jour jour = new Jour(DEFAULT_YEAR, DEFAULT_DAY);
         
