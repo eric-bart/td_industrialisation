@@ -15,7 +15,10 @@
  */
 package tp04.metier;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,7 +52,7 @@ public class ActionComposee extends Action {
     @Override
     public float valeur(Jour j) {
         try {
-            float valeur;
+            float valeur; 
             valeur = 0;
             for (ActionSimple as : this.mapPanier.keySet()) {
                 valeur = valeur + (as.valeur(j) * this.mapPanier.get(as));
@@ -72,5 +75,25 @@ public class ActionComposee extends Action {
             return "Il n'existe pas de cours pour cette valeur";
         }
     }
-
+    
+    /**
+     * Retourne une liste d'actions simples, contenues dans l'action composée.
+     * @return la liste d'actions simples
+     */
+    public List<ActionSimple> getCompositionActionComposee() {
+        return new ArrayList<>(this.mapPanier.keySet());
+    }
+    
+    /**
+     * Construit et retourne une chaîne de caractère correspondant à l'ensemble des actions simples associées à leur pourcentage
+     * @return la chaîne de caractère
+     */
+    public String getCompositionActionComposeeWithPercentage() {
+        StringBuilder strBuilder = new StringBuilder();
+        mapPanier.forEach((actionSimple, pourcentage) -> {
+            String newLine = "| " + actionSimple.getLibelle() + " ; "+ pourcentage +"%";
+            strBuilder.append(newLine);
+        });
+        return strBuilder.toString();
+    }
 }
