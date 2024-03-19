@@ -36,7 +36,8 @@ public class ActionSimple extends Action {
         super(libelle);
         // init spécifique
         this.mapCours = new HashMap();
-        listeActionsSimples.add(this);
+        Bourse.getBourse().listeActionsSimples.add(this);
+
     }
 
     // enrg possible si pas de cours pour ce jour

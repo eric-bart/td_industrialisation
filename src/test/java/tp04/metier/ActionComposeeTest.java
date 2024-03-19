@@ -15,6 +15,7 @@
  */
 package tp04.metier;
 
+import java.util.ArrayList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -55,5 +56,20 @@ public class ActionComposeeTest {
         portefeuille.acheter(action_composee, 2);
         portefeuille.vendre(action_composee, 1);
         
+    }
+        @Test
+        void testActionListUpdatedShouldSucceed() {
+        final ActionComposee auchan = new ActionComposee("Auchan");
+        final ActionComposee micromania = new ActionComposee("Micromania");
+        final ActionComposee disney = new ActionComposee("Disney");
+        
+        //Arrange
+        Bourse bourse = Bourse.getBourse();
+        bourse.listeActionsComposees.add(auchan);
+        bourse.listeActionsComposees.add(micromania);
+        bourse.listeActionsComposees.add(disney);
+
+        //Assert
+        Assertions.assertTrue(bourse.listeActionsComposees.equals(listActions), "Liste des actions consultables différentes de celles insérées.");
     }
 }
