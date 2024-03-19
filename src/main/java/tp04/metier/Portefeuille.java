@@ -64,18 +64,20 @@ public class Portefeuille {
             }
         return total;
     }
-    
+
     /**
-     * Retourne la quantité d'action simple dans le portefeuille pour une action donnée
+     * Retourne la quantité d'action simple ou composée dans le portefeuille pour une action donnée
      * @author Eric B
      * @param actionName le nom de l'action pour laquelle récupérer la quantité enregistrée
      * @return la quantité d'action disponible pour le nom d'action passé en paramètre
      */
     public int getQuantiteAction(String actionName) {
-        if(this.mapActions.get(new ActionSimple(actionName)) != null) {
-            return this.mapActions.get(new ActionSimple(actionName));
+        Integer quantite = this.mapActions.get(new ActionSimple(actionName));
+        if (quantite != null) {
+            return quantite;
         }
-        return 0;
+        quantite = this.mapActions.get(new ActionComposee(actionName));
+        return quantite != null ? quantite : 0;
     }
     
     /**
@@ -98,5 +100,43 @@ public class Portefeuille {
      */
     public void displayQuantiteAction(String actionName) {
         System.out.println(getQuantiteActionMessage(actionName));
+    }
+    
+    /**
+     * Générer le msg de la composition du portefeuille
+     * @author CMED
+     * @return str
+     */
+    public String getAllActionMessage() {
+        String str = "";
+        
+        for (Action ac : mapActions.keySet()) {
+            str += ac.getLibelle() + ", quantitée : " + mapActions.get(ac) + "\n";
+        }
+        
+        return str;
+    }
+    
+    /**
+     * Afficher la composition du portefeuille
+     * @author CMED
+     */
+    public void printAllAction() {
+        System.out.print(getAllActionMessage());
+    }
+     
+     /* Retourne une chaîne de caractère récapitulant la composition d'une action composée (Nom action simple + Pourcentage associé)
+     * @author Eric B
+     * @param actionName nom de l'action dont il faut récupérer la composition
+     * @return la chaîne de caractère qui récapitule la composition
+     */
+    public String displayCompositionActionComposee(String actionName) {
+        for (Map.Entry<Action, Integer> entry : this.mapActions.entrySet()) {
+            Action action = entry.getKey();
+            if (action instanceof ActionComposee && action.getLibelle().equals(actionName)) {
+                return ((ActionComposee) action).getCompositionActionComposeeWithPercentage();
+            }
+        }
+        return "L'action composée " + actionName + " n'est pas présente dans le portefeuille.";
     }
 }
