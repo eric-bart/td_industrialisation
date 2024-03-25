@@ -203,4 +203,23 @@ public class ActionSimpleTest {
         //Assert
         Assertions.assertEquals( 20.00f, auchan.comparerCours(j1, j2), "Should have a 20% evolution between j1 and j2");
     }
+    
+    /**
+    * @author noeCollongues
+    */
+    @Test
+    void testActionSimpleEvolutionReversedParameter() {
+        final ActionSimple auchan = new ActionSimple("Auchan");
+        Jour j1 = new Jour(2000, 1);
+        Jour j2 = new Jour(2000, 2);
+        
+        //Arrange
+       auchan.enrgCours(j1, 50.00f);
+       auchan.enrgCours(j2, 60.00f);
+
+
+        //Assert
+        Assertions.assertEquals( 20.00f, auchan.comparerCours(j2, j1), "Should have a 20% evolution between j1 and j2");
+    }
+
 }
