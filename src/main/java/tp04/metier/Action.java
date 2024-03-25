@@ -43,10 +43,14 @@ public abstract class Action {
      * @param j1 first day
      * @param j2 second day
      * @return evolution of value as a percentage
-     */
+     */ 
     public float comparerCours(Jour j1, Jour j2){
-        if(j1.compareTo(j2)>0) return (float)((this.valeur(j1)-this.valeur(j2))/this.valeur(j2))*100;
-        else return (float)((this.valeur(j2)-this.valeur(j1))/this.valeur(j1))*100; 
+        if(j1.compareTo(j2)>0){
+            return Math.round((float)((this.valeur(j1)-this.valeur(j2))/this.valeur(j2))*100);
+        }
+        else{
+            return (float)((this.valeur(j2)-this.valeur(j1))/this.valeur(j1))*100;
+        }
     }
 
     public abstract float valeur(Jour j);
