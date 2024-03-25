@@ -46,10 +46,11 @@ public abstract class Action {
      */ 
     public float comparerCours(Jour j1, Jour j2){
         if(j1.compareTo(j2)>0){
+            System.out.println((float)((this.valeur(j1)-this.valeur(j2))/this.valeur(j2))*100);
             return Math.round((float)((this.valeur(j1)-this.valeur(j2))/this.valeur(j2))*100);
         }
         else{
-            return (float)((this.valeur(j2)-this.valeur(j1))/this.valeur(j1))*100;
+            return Math.round((float)((this.valeur(j2)-this.valeur(j1))/this.valeur(j1))*100);
         }
     }
 
